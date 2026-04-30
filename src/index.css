@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --color-space-900: #0a0e1a;
+  --color-space-800: #111827;
+  --color-space-700: #1e293b;
+  --color-nebula-purple: #7c3aed;
+  --color-nebula-blue: #3b82f6;
+  --color-star-white: #f1f5f9;
+  --color-correct: #16a34a;
+  --color-wrong: #dc2626;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at top, var(--color-space-800) 0%, var(--color-space-900) 100%);
+  background-attachment: fixed;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 20px 30px, white, transparent),
+    radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 130px 80px, white, transparent),
+    radial-gradient(1px 1px at 160px 30px, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1.5px 1.5px at 200px 60px, white, transparent),
+    radial-gradient(1px 1px at 250px 20px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 300px 90px, white, transparent),
+    radial-gradient(1.5px 1.5px at 350px 50px, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 400px 70px, rgba(255,255,255,0.6), transparent);
+  background-size: 420px 100px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
