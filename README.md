@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="public/banner.svg" alt="Space Hangman" width="100%"/>
+</p>
+
 # Space Hangman
 
 A space-themed hangman game built with React, TypeScript, and Tailwind CSS.
