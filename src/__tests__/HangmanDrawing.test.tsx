@@ -27,18 +27,20 @@ describe('HangmanDrawing', () => {
     expect(container.querySelector('[data-testid="part-right-arm"]')).not.toBeInTheDocument()
   })
 
-  it('shows all 6 parts when wrongGuessCount is 6', () => {
-    const { container } = render(<HangmanDrawing wrongGuessCount={6} />)
+  it('shows all 8 parts when wrongGuessCount is 8', () => {
+    const { container } = render(<HangmanDrawing wrongGuessCount={8} />)
     expect(container.querySelector('[data-testid="part-helmet"]')).toBeInTheDocument()
     expect(container.querySelector('[data-testid="part-body"]')).toBeInTheDocument()
     expect(container.querySelector('[data-testid="part-left-arm"]')).toBeInTheDocument()
     expect(container.querySelector('[data-testid="part-right-arm"]')).toBeInTheDocument()
     expect(container.querySelector('[data-testid="part-left-leg"]')).toBeInTheDocument()
     expect(container.querySelector('[data-testid="part-right-leg"]')).toBeInTheDocument()
+    expect(container.querySelector('[data-testid="part-oxygen-tank"]')).toBeInTheDocument()
+    expect(container.querySelector('[data-testid="part-tether"]')).toBeInTheDocument()
   })
 
   it('has accessible label', () => {
     render(<HangmanDrawing wrongGuessCount={3} />)
-    expect(screen.getByLabelText('3 of 6 wrong guesses')).toBeInTheDocument()
+    expect(screen.getByLabelText('3 of 8 wrong guesses')).toBeInTheDocument()
   })
 })
