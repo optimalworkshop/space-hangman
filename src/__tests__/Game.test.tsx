@@ -53,15 +53,15 @@ describe('Game', () => {
     expect(screen.getByText('Mission Complete!')).toBeInTheDocument()
   })
 
-  it('shows loss message after 6 wrong guesses', async () => {
+  it('shows loss message after 8 wrong guesses', async () => {
     render(<Game />)
-    await userEvent.keyboard('xyzwqj')
+    await userEvent.keyboard('xyzwqjkm')
     expect(screen.getByText('Mission Failed')).toBeInTheDocument()
   })
 
   it('reveals word on loss', async () => {
     render(<Game />)
-    await userEvent.keyboard('xyzwqj')
+    await userEvent.keyboard('xyzwqjkm')
     expect(screen.getByText('NEBULA')).toBeInTheDocument()
   })
 
@@ -75,13 +75,13 @@ describe('Game', () => {
 
   it('shows guesses remaining', () => {
     render(<Game />)
-    expect(screen.getByText('6 guesses remaining')).toBeInTheDocument()
+    expect(screen.getByText('8 guesses remaining')).toBeInTheDocument()
   })
 
   it('decrements guesses remaining on wrong guess', async () => {
     render(<Game />)
     await userEvent.keyboard('x')
-    expect(screen.getByText('5 guesses remaining')).toBeInTheDocument()
+    expect(screen.getByText('7 guesses remaining')).toBeInTheDocument()
   })
 
   it('shows stats', () => {

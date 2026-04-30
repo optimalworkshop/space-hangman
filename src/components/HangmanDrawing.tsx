@@ -4,7 +4,7 @@ interface Props {
 
 export function HangmanDrawing({ wrongGuessCount }: Props) {
   return (
-    <svg viewBox="0 0 200 200" className="w-48 h-48 mx-auto" aria-label={`${wrongGuessCount} of 6 wrong guesses`}>
+    <svg viewBox="0 0 200 200" className="w-48 h-48 mx-auto" aria-label={`${wrongGuessCount} of 8 wrong guesses`}>
       {/* Helmet */}
       {wrongGuessCount >= 1 && (
         <g data-testid="part-helmet">
@@ -47,8 +47,22 @@ export function HangmanDrawing({ wrongGuessCount }: Props) {
           <rect x="120" y="153" width="10" height="6" rx="2" fill="white" />
         </g>
       )}
+      {/* Oxygen Tank */}
+      {wrongGuessCount >= 7 && (
+        <g data-testid="part-oxygen-tank">
+          <rect x="120" y="82" width="10" height="22" rx="5" fill="none" stroke="#60a5fa" strokeWidth="1.5" />
+          <line x1="125" y1="82" x2="115" y2="80" stroke="#60a5fa" strokeWidth="1.5" strokeLinecap="round" />
+        </g>
+      )}
+      {/* Tether */}
+      {wrongGuessCount >= 8 && (
+        <g data-testid="part-tether">
+          <path d="M 100 75 Q 80 60 60 30 Q 50 15 55 10" fill="none" stroke="#60a5fa" strokeWidth="1.5" strokeDasharray="4 2" />
+          <circle cx="55" cy="8" r="3" fill="#60a5fa" opacity="0.6" />
+        </g>
+      )}
       {/* Floating particles when lost */}
-      {wrongGuessCount >= 6 && (
+      {wrongGuessCount >= 8 && (
         <g opacity="0.5">
           <circle cx="50" cy="30" r="1.5" fill="white" />
           <circle cx="150" cy="40" r="1" fill="white" />

@@ -1,6 +1,6 @@
 import type { GameStatus } from '../types/game'
 
-export const MAX_WRONG_GUESSES = 6
+export const MAX_WRONG_GUESSES = 8
 
 export function selectRandomWord(words: string[]): string {
   return words[Math.floor(Math.random() * words.length)]

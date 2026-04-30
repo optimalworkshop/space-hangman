@@ -70,12 +70,12 @@ describe('checkGameStatus', () => {
   })
 
   it('returns lost when max wrong guesses reached', () => {
-    const guessed = new Set(['X', 'Y', 'Z', 'W', 'Q', 'J'])
+    const guessed = new Set(['X', 'Y', 'Z', 'W', 'Q', 'J', 'K', 'M'])
     expect(checkGameStatus('NEBULA', guessed)).toBe('lost')
   })
 
-  it('uses MAX_WRONG_GUESSES constant which is 6', () => {
-    expect(MAX_WRONG_GUESSES).toBe(6)
+  it('uses MAX_WRONG_GUESSES constant which is 8', () => {
+    expect(MAX_WRONG_GUESSES).toBe(8)
   })
 
   it('returns won even with some wrong guesses', () => {
