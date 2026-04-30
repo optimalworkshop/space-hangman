@@ -1,73 +1,52 @@
-# React + TypeScript + Vite
+# Space Hangman
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A space-themed hangman game built with React, TypeScript, and Tailwind CSS.
 
-Currently, two official plugins are available:
+Guess the word before your astronaut drifts into the void. You get 8 wrong guesses — each one reveals another part of the astronaut (helmet, suit, arms, legs, oxygen tank, and tether).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Getting started
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Then open http://localhost:5173 in your browser.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Running tests
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm test
 ```
+
+This runs 59 tests covering game logic, component behavior, and integration flows.
+
+## Type-checking
+
+```bash
+npx tsc -b
+```
+
+## Project structure
+
+```
+src/
+├── types/          # TypeScript interfaces (GameState, Stats)
+├── logic/          # Pure functions — game rules, word list, stats
+├── hooks/          # useGame (state management), useKeyboardListener
+├── components/     # React components (Game, Keyboard, HangmanDrawing, etc.)
+└── __tests__/      # Unit and component tests
+```
+
+## Tech stack
+
+- **React 19** with TypeScript
+- **Vite** for dev server and bundling
+- **Tailwind CSS v4** for styling
+- **Vitest** + React Testing Library for tests
+
+## How it works
+
+The game logic lives in `src/logic/` as pure functions with no side effects — easy to read, test, and extend. State is managed via `useReducer` in a custom `useGame` hook. The SVG astronaut drawing is built inline as a React component with conditional rendering based on wrong guess count.
+
+Stats (wins, losses, streak) persist in localStorage across sessions.
